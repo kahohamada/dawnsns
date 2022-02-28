@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 {!! Form::open() !!}
 
 <h2>新規ユーザー登録</h2>
