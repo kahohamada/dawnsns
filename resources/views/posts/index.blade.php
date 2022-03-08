@@ -20,7 +20,7 @@
     <img src="/images/edit.png" alt="edit">
   </td>
   <td>
-    <img src="/images/trash.png" alt="trash">
+    <a href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="trash"></a>
   </td>
 </tr>
 

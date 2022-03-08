@@ -35,6 +35,7 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
+//tweet内容更新
     public function uptweet(Request $request){
         $uptweet = $request->input('uptweet');
         $upid = $request->input('upid');
@@ -43,6 +44,16 @@ class PostsController extends Controller
             ->update([
                 'posts' => $uptweet,
             ]);
+
+        return redirect('/top');
+    }
+
+//tweet削除
+    public function trash($id)
+    {
+        DB::table('posts')
+            ->where('id', $id)
+            ->delete();
 
         return redirect('/top');
     }
