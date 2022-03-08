@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostsController extends Controller
@@ -17,7 +19,32 @@ class PostsController extends Controller
 
 //index
     public function index(){
-        $list = DB::table('posts')->get();
-        return view('posts.index',['list'=>$list]);
+        $lists = Post::orderBy('posts.created_at','desc')
+            ->get();
+        return view('posts.index',['lists'=>$lists]);
     }
+
+    public function tweet(Request $request){
+        $tweet = $request->input('tweet');
+
+        Post::create([
+            'user_id' => Auth::id(),
+            'posts' => $tweet,
+        ]);
+
+        return redirect('/top');
+    }
+
+    public function uptweet(Request $request){
+        $uptweet = $request->input('uptweet');
+        $upid = $request->input('upid');
+
+        Post::where('id',$upid)
+            ->update([
+                'posts' => $uptweet,
+            ]);
+
+        return redirect('/top');
+    }
+
 }

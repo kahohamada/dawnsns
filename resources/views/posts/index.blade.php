@@ -1,9 +1,37 @@
 @extends('layouts.login')
 
 @section('content')
-<h2>機能を実装していきましょう。</h2>
+<form action="/tweet" method="post">
+    @csrf
+    <input type="text" name="tweet" placeholder="なにをつぶやこうか？">
+    <input type="image" src="/images/post.png" alt="送信する">
+</form>
 
+<table>
+@foreach($lists as $list)
+<tr>
+  <td>
+    <img src="/images/{{ $list->user->images }}" alt="icon">
+  </td>
+  <td>{{ $list->user->username }}</td>
+  <td>{{ $list->posts }}</td>
+  <td>{{ $list->created_at }}</td>
+  <td>
+    <img src="/images/edit.png" alt="edit">
+  </td>
+  <td>
+    <img src="/images/trash.png" alt="trash">
+  </td>
+</tr>
 
+<form action="/uptweet" method="post">
+  @csrf
+  <input type="text" name="uptweet" value="{{ $list->posts }}">
+  <input type="hidden" name="upid" value="{{ $list->id }}">
+  <input type="image" src="/images/edit.png" alt="edit">
+</form>
+@endforeach
+</table>
 
 
 
