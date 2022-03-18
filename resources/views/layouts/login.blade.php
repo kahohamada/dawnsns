@@ -35,6 +35,7 @@
             </div>
         </div>
     </header>
+
     <div id="row">
         <div id="container">
             @yield('content')
@@ -42,23 +43,55 @@
         <div id="side-bar">
             <div id="confirm">
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p>
+
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p><?php $user = Auth::user(); ?>{{ $user->follow }}名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+
+        <div class='followlist'>
+                <p class="btn btn-success"><a href="post/follow">フォローリスト</a></p>
+        </div>
+
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p><?php $user = Auth::user(); ?>{{ $user->follower }}名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
-            </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+
+        <div class='followerlist'>
+                <p class="btn btn-success"><a href="post/follower">フォロワーリスト</a></p>
+        </div>
+
+        <div class='search'>
+            <p class="btn btn-success"><a href="/usersearch">ユーザー検索</a></p>
+            <p class="btn btn-success"><a href="">つぶやき検索</a></p>
+        </div>
+
         </div>
     </div>
+
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+    $(function(){
+     $('.js-modal-open').each(function(){
+     $(this).on('click',function(){
+        var target = $(this).data('target');
+        var modal = document.getElementById(target);
+        console.log(modal);
+        $(modal).fadeIn();
+        return false;
+    });
+    $('.js-modal-close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
+    });
+    });
+    </script>
+
 </body>
 </html>

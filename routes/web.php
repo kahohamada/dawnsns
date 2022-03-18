@@ -36,11 +36,19 @@ Route::post('/uptweet', 'PostsController@uptweet');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+// フォローリスト
+Route::get('/followList','FollowsController@followList');
+Route::post('/follow','FollowsController@follow');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+// フォロワーリスト
+Route::get('/followerList','FollowsController@followerList');
+Route::get('/follower','FollowsController@follower');
+
 
 Route::get('/logout','Auth\LoginController@logout');
 
 Route::get('/posts/{id}/delete','PostsController@trash');
+
+// ユーザー検索
+Route::get('/usersearch','UsersController@usersearch');
+Route::post('/usersearch','UsersController@usersearch');

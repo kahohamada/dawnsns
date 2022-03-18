@@ -20,3 +20,33 @@ header{
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
 }
+
+/* モーダルテスト */
+.modal{
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.modal__bg{
+    background: rgba(0,0,0,0.1);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.modal__content{
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+}
+
+.modal-footer{
+    width: 100%;
+    text-align: right;
+}
