@@ -50,3 +50,9 @@ header{
     width: 100%;
     text-align: right;
 }
+
+textarea {
+  resize: none;
+  width:600px;
+  height:200px;
+}

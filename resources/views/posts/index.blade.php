@@ -33,7 +33,7 @@
 
         <form action="/uptweet" method="post">
             @csrf
-            <textarea name="uptweet">{{ $list->posts }}</textarea>
+            <textarea name="uptweet" rows="1" cols="200">{{ $list->posts }}</textarea>
             <input type="hidden" name="upid" value="{{ $list->id }}">
         <div class="modal-footer">
             <input type="image" src="/images/edit.png" alt="edit">

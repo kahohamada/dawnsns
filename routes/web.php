@@ -38,11 +38,9 @@ Route::get('/profile','UsersController@profile');
 
 // フォローリスト
 Route::get('/followList','FollowsController@followList');
-Route::post('/follow','FollowsController@follow');
 
 // フォロワーリスト
 Route::get('/followerList','FollowsController@followerList');
-Route::get('/follower','FollowsController@follower');
 
 
 Route::get('/logout','Auth\LoginController@logout');
@@ -52,3 +50,7 @@ Route::get('/posts/{id}/delete','PostsController@trash');
 // ユーザー検索
 Route::get('/usersearch','UsersController@usersearch');
 Route::post('/usersearch','UsersController@usersearch');
+
+// フォロー機能
+Route::get('/follow/{follow}','FollowsController@follow');
+Route::get('/unfollow/{unfollow}','FollowsController@unfollow');
