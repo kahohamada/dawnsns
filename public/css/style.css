@@ -56,3 +56,10 @@ textarea {
   width:600px;
   height:200px;
 }
+
+.usersicon {
+  width:55px;
+  height:55px;
+  object-fit:cover;
+  border-radius:50%;
+}

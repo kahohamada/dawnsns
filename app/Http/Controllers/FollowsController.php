@@ -9,12 +9,39 @@ use Illuminate\Support\Facades\Auth;
 class FollowsController extends Controller
 {
     //
-    public function followList(){
-        return view('follows.followList');
+    public function followlist(){
+
+        $followlists = Follow::join('users','follows.follow','=','users.id')
+            ->where('follower', Auth::id())
+            ->select('users.id','users.images')
+            ->get();
+
+        $followposts = Follow::join('users', 'follows.follow', '=','users.id')
+            ->join('posts', 'users.id', '=' ,'posts.user_id')
+            ->where('follower', Auth::id())
+            ->select('users.id','users.images', 'posts.posts', 'posts.created_at')
+            ->get();
+
+        return view('follows.followList', ['followlists'=>$followlists, 'followposts'=>$followposts]);
     }
-    public function followerList(){
-        return view('follows.followerList');
+
+
+    public function followerlist(){
+
+        $followerlists = Follow::join('users','follows.follower','=','users.id')
+            ->where('follow', Auth::id())
+            ->select('users.id','users.images')
+            ->get();
+
+        $followerposts = Follow::join('users', 'follows.follower', '=','users.id')
+            ->join('posts', 'users.id', '=' ,'posts.user_id')
+            ->where('follow', Auth::id())
+            ->select('users.id','users.images', 'posts.posts', 'posts.created_at')
+            ->get();
+
+        return view('follows.followerList', ['followerlists' => $followerlists, 'followerposts' => $followerposts]);
     }
+
 
     public function follow($follow){
         Follow::create([
@@ -32,5 +59,6 @@ class FollowsController extends Controller
 
         return back();
     }
+
 
 }

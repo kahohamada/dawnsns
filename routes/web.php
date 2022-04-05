@@ -34,10 +34,15 @@ Route::get('/top','PostsController@index');
 Route::post('/tweet', 'PostsController@tweet');
 Route::post('/uptweet', 'PostsController@uptweet');
 
+//プロフィール編集
 Route::get('/profile','UsersController@profile');
+Route::post('/profile','UsersController@profile');
+Route::post('/upprofile','UsersController@upprofile');
+Route::get('/index','UsersController@index');
 
 // フォローリスト
 Route::get('/followList','FollowsController@followList');
+
 
 // フォロワーリスト
 Route::get('/followerList','FollowsController@followerList');

@@ -25,7 +25,7 @@
         <h1><a><img src="/images/main_logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん <img src="/images/dawn.png"></p>
+                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん <img src="/images/{{$user->images}}" class="usersicon"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
@@ -50,7 +50,7 @@
                 </div>
 
         <div class='followlist'>
-                <p class="btn btn-success"><a href="post/follow">フォローリスト</a></p>
+                <p class="btn btn-success"><a href="/followList">フォローリスト</a></p>
         </div>
 
                 <div>
@@ -59,7 +59,7 @@
                 </div>
 
         <div class='followerlist'>
-                <p class="btn btn-success"><a href="post/follower">フォロワーリスト</a></p>
+                <p class="btn btn-success"><a href="/followerList">フォロワーリスト</a></p>
         </div>
 
         <div class='search'>
